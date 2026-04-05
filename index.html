@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediPulse – Health & Innovation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,800;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <img src="logo.jpeg" alt="MediPulse Logo" class="nav-logo"/>
+      <span class="brand-text">MEDI<span class="brand-accent">PULSE</span></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="device.html">The Device</a></li>
+        <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item ms-lg-3"><a class="btn btn-glow" href="dashboard.html">Live Monitor</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-section d-flex align-items-center">
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="container position-relative z-2">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="hero-badge mb-3"><span class="pulse-dot"></span> AI-Powered Wound Intelligence</div>
+        <h1 class="hero-title">Next-Gen <span class="text-gradient">Wound Monitoring</span> Technology</h1>
+        <p class="hero-sub">MediPulse delivers real-time biochemical analysis of wound microenvironments — detecting infection risk before symptoms appear, powered by embedded biosensors and edge AI.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="device.html" class="btn btn-glow px-4 py-3">Explore Device <i class="bi bi-arrow-right ms-2"></i></a>
+          <a href="dashboard.html" class="btn btn-outline-glow px-4 py-3">Live Dashboard</a>
+        </div>
+        <div class="hero-stats d-flex gap-4 mt-5 flex-wrap">
+          <div class="stat-item"><div class="stat-num">98.6<span>%</span></div><div class="stat-label">Accuracy</div></div>
+          <div class="stat-item"><div class="stat-num">2<span>min</span></div><div class="stat-label">Alert Response</div></div>
+          <div class="stat-item"><div class="stat-num">50K<span>+</span></div><div class="stat-label">Patients Monitored</div></div>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center">
+        <div class="hero-device-wrap">
+          <div class="device-glow-ring"></div>
+          <img src="logo.jpeg" alt="MediPulse Device" class="hero-device-img"/>
+          <div class="floating-badge badge-top">
+            <i class="bi bi-activity"></i> pH: 7.4 <span class="badge-ok">Normal</span>
+          </div>
+          <div class="floating-badge badge-bot">
+            <i class="bi bi-thermometer-half"></i> 36.8°C <span class="badge-ok">Stable</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES STRIP -->
+<section class="features-strip py-5">
+  <div class="container">
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3">
+        <div class="feat-card">
+          <div class="feat-icon"><i class="bi bi-broadcast"></i></div>
+          <div class="feat-title">Real-Time Sensing</div>
+          <p class="feat-desc">Continuous pH, temperature & exudate monitoring every 30 seconds.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="feat-card">
+          <div class="feat-icon"><i class="bi bi-cpu"></i></div>
+          <div class="feat-title">Edge AI Engine</div>
+          <p class="feat-desc">On-device ML model predicts healing trajectory and infection risk.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="feat-card">
+          <div class="feat-icon"><i class="bi bi-shield-check"></i></div>
+          <div class="feat-title">Sterile & Safe</div>
+          <p class="feat-desc">FDA-cleared biocompatible sensors — safe for chronic & surgical wounds.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="feat-card">
+          <div class="feat-icon"><i class="bi bi-wifi"></i></div>
+          <div class="feat-title">Wireless Cloud Sync</div>
+          <p class="feat-desc">BLE + LTE connectivity with HIPAA-compliant cloud storage.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section py-5 my-4">
+  <div class="container">
+    <div class="section-label">HOW IT WORKS</div>
+    <h2 class="section-title mb-5">From <span class="text-gradient">Sensor</span> to Clinician in Seconds</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h5>Apply Smart Dressing</h5>
+          <p>The MediPulse dressing is applied over the wound. Embedded nano-biosensors immediately start acquiring data.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h5>Continuous Analysis</h5>
+          <p>The microcontroller processes pH, temperature, moisture level and bacterial biomarkers in real time.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h5>Clinician Notified</h5>
+          <p>Alerts and full wound health reports are pushed to the clinician dashboard and mobile app within 2 minutes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section py-5">
+  <div class="container">
+    <div class="section-label">CLINICIAN VOICES</div>
+    <h2 class="section-title mb-5">Trusted by <span class="text-gradient">Healthcare Professionals</span></h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="testi-card">
+          <div class="testi-quote"><i class="bi bi-quote"></i></div>
+          <p>"MediPulse flagged an early-stage infection in a diabetic foot ulcer patient 48 hours before any visible clinical sign. It saved the limb."</p>
+          <div class="testi-author"><img src="https://ui-avatars.com/api/?name=Dr+Ananya+Menon&background=0d6efd&color=fff" alt=""/>Dr. Ananya Menon — Apollo Hospitals</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testi-card">
+          <div class="testi-quote"><i class="bi bi-quote"></i></div>
+          <p>"The dashboard is intuitive. Our nursing staff can monitor 20 patients simultaneously without leaving the station."</p>
+          <div class="testi-author"><img src="https://ui-avatars.com/api/?name=Sr+Carla+Benson&background=198754&color=fff" alt=""/>Sr. Carla Benson — St. Mary's ICU</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testi-card">
+          <div class="testi-quote"><i class="bi bi-quote"></i></div>
+          <p>"We reduced post-op infection rates by 34% in just one quarter after deploying MediPulse across surgical wards."</p>
+          <div class="testi-author"><img src="https://ui-avatars.com/api/?name=Dr+James+Park&background=dc3545&color=fff" alt=""/>Dr. James Park — Seoul National Hospital</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-section py-5 my-4">
+  <div class="container text-center">
+    <h2 class="cta-title">Ready to Transform Wound Care?</h2>
+    <p class="cta-sub mb-4">Request a clinical trial kit or schedule a product demo with our team.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="contact.html" class="btn btn-glow px-5 py-3">Request Demo</a>
+      <a href="device.html" class="btn btn-outline-glow px-5 py-3">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer pt-5 pb-3">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <img src="logo.jpeg" alt="Logo" style="height:40px;border-radius:8px;"/>
+          <span class="brand-text">MEDI<span class="brand-accent">PULSE</span></span>
+        </div>
+        <p class="footer-desc">Advanced wound monitoring technology bridging biosensing, edge AI, and clinical workflows.</p>
+        <div class="social-links mt-3">
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Product</div>
+        <ul class="footer-links">
+          <li><a href="device.html">The Device</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Clinical Trials</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <div class="footer-heading">Newsletter</div>
+        <p class="footer-desc">Get the latest in wound care innovation.</p>
+        <div class="input-group mt-2">
+          <input type="email" class="form-control footer-input" placeholder="your@email.com"/>
+          <button class="btn btn-glow" type="button">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom mt-5 pt-3">
+      <span>© 2026 MediPulse Health & Innovation. All rights reserved.</span>
+      <span class="ms-auto">FDA Cleared | CE Marked | ISO 13485</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

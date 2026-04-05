@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard – MediPulse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,800;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <img src="logo.jpeg" alt="MediPulse Logo" class="nav-logo"/>
+      <span class="brand-text">MEDI<span class="brand-accent">PULSE</span></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="device.html">The Device</a></li>
+        <li class="nav-item"><a class="nav-link active" href="dashboard.html">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item ms-lg-3"><a class="btn btn-glow" href="dashboard.html">Live Monitor</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero py-4" style="padding-top:120px!important;">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div>
+        <div class="section-label">LIVE CLINICAL DASHBOARD</div>
+        <h1 class="section-title mb-0">Ward <span class="text-gradient">Monitor</span></h1>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <div class="live-indicator"><span class="pulse-dot"></span> LIVE</div>
+        <select class="form-select dash-select" id="wardSelect">
+          <option>Ward A – Surgical</option>
+          <option>Ward B – Diabetic Care</option>
+          <option>ICU East</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY CARDS -->
+<section class="py-3">
+  <div class="container">
+    <div class="row g-3">
+      <div class="col-6 col-lg-3">
+        <div class="kpi-card">
+          <div class="kpi-icon text-info"><i class="bi bi-people-fill"></i></div>
+          <div class="kpi-val" id="kpiPatients">12</div>
+          <div class="kpi-label">Active Patients</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="kpi-card">
+          <div class="kpi-icon text-warning"><i class="bi bi-exclamation-triangle-fill"></i></div>
+          <div class="kpi-val text-warning" id="kpiAlerts">3</div>
+          <div class="kpi-label">Active Alerts</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="kpi-card">
+          <div class="kpi-icon text-success"><i class="bi bi-check2-circle"></i></div>
+          <div class="kpi-val text-success" id="kpiStable">8</div>
+          <div class="kpi-label">Stable</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="kpi-card">
+          <div class="kpi-icon text-danger"><i class="bi bi-bell-fill"></i></div>
+          <div class="kpi-val text-danger" id="kpiCritical">1</div>
+          <div class="kpi-label">Critical</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PATIENT TABLE -->
+<section class="py-3 pb-5">
+  <div class="container">
+    <div class="dash-panel">
+      <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+        <h5 class="mb-0">Patient Wound Status <span class="badge-live ms-2">Auto-refresh: 30s</span></h5>
+        <div class="d-flex gap-2">
+          <input class="form-control dash-select" placeholder="Search patient..." style="max-width:200px;" id="searchInput"/>
+          <button class="btn btn-glow btn-sm" onclick="refreshData()"><i class="bi bi-arrow-clockwise me-1"></i>Refresh</button>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table dash-table" id="patientTable">
+          <thead>
+            <tr>
+              <th>Patient</th>
+              <th>Wound Type</th>
+              <th>pH</th>
+              <th>Temp (°C)</th>
+              <th>Moisture</th>
+              <th>Risk Score</th>
+              <th>Status</th>
+              <th>Last Update</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="patientBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CHART AREA -->
+    <div class="row g-4 mt-2">
+      <div class="col-lg-6">
+        <div class="dash-panel">
+          <h6 class="mb-3">pH Trend – Patient MP-007 (Rahman A.)</h6>
+          <canvas id="phChart" height="180"></canvas>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="dash-panel">
+          <h6 class="mb-3">Temperature Trend – Patient MP-007</h6>
+          <canvas id="tempChart" height="180"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALERTS FEED -->
+    <div class="dash-panel mt-4">
+      <h5 class="mb-4">Alert Feed</h5>
+      <div id="alertFeed"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer pt-4 pb-3">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 MediPulse. Dashboard data is simulated for demonstration purposes.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<script src="main.js"></script>
+<script>
+const patients = [
+  {id:"MP-001",name:"Arjun Sharma",wound:"Diabetic Foot Ulcer",ph:8.1,temp:38.4,moisture:72,risk:87,status:"critical"},
+  {id:"MP-002",name:"Priya Nair",wound:"Post-Op Incision",ph:7.2,temp:36.9,moisture:45,risk:22,status:"stable"},
+  {id:"MP-003",name:"James Wilson",wound:"Pressure Ulcer",ph:7.8,temp:37.6,moisture:61,risk:55,status:"warning"},
+  {id:"MP-004",name:"Fatima Al-Hassan",wound:"Venous Leg Ulcer",ph:7.4,temp:37.1,moisture:53,risk:30,status:"stable"},
+  {id:"MP-005",name:"Chen Wei",wound:"Burn Wound",ph:7.9,temp:38.1,moisture:80,risk:74,status:"warning"},
+  {id:"MP-006",name:"Lakshmi Iyer",wound:"Surgical Wound",ph:7.1,temp:36.7,moisture:40,risk:18,status:"stable"},
+  {id:"MP-007",name:"Rahman Ansari",wound:"Diabetic Foot Ulcer",ph:8.3,temp:38.9,moisture:75,risk:91,status:"critical"},
+  {id:"MP-008",name:"Meera Pillai",wound:"Post-Op Incision",ph:7.3,temp:36.8,moisture:44,risk:20,status:"stable"},
+  {id:"MP-009",name:"David Okafor",wound:"Traumatic Wound",ph:7.6,temp:37.3,moisture:57,risk:42,status:"stable"},
+  {id:"MP-010",name:"Aisha Patel",wound:"Pressure Ulcer",ph:7.7,temp:37.5,moisture:63,risk:58,status:"warning"},
+  {id:"MP-011",name:"Ravi Kumar",wound:"Venous Leg Ulcer",ph:7.2,temp:37.0,moisture:48,risk:25,status:"stable"},
+  {id:"MP-012",name:"Maria Santos",wound:"Post-Op Incision",ph:7.1,temp:36.6,moisture:42,risk:15,status:"stable"},
+];
+
+const alerts = [
+  {time:"10:42 AM",patient:"Arjun Sharma (MP-001)",msg:"pH elevated to 8.1 — possible early infection. Recommend review.",level:"critical"},
+  {time:"10:38 AM",patient:"Rahman Ansari (MP-007)",msg:"Temperature spike to 38.9°C. Alert sent to Dr. Menon.",level:"critical"},
+  {time:"10:25 AM",patient:"Chen Wei (MP-005)",msg:"Moisture level exceeding threshold (80%). Dressing change advised.",level:"warning"},
+  {time:"10:10 AM",patient:"Aisha Patel (MP-010)",msg:"pH rising trend detected over last 2 hours.",level:"warning"},
+  {time:"09:55 AM",patient:"James Wilson (MP-003)",msg:"Moderate pH elevation. Continue monitoring.",level:"warning"},
+  {time:"09:30 AM",patient:"Priya Nair (MP-002)",msg:"All parameters normal. Healing trajectory on track.",level:"ok"},
+];
+
+function statusBadge(s){
+  if(s==="critical") return '<span class="status-badge critical">Critical</span>';
+  if(s==="warning") return '<span class="status-badge warning">Warning</span>';
+  return '<span class="status-badge stable">Stable</span>';
+}
+function riskBar(r){
+  let c = r>70?"#ff4d6d":r>40?"#ffc107":"#39ff9f";
+  return `<div class="risk-bar-wrap"><div class="risk-bar" style="width:${r}%;background:${c}"></div><span>${r}</span></div>`;
+}
+function renderTable(){
+  const tb = document.getElementById("patientBody");
+  const q = document.getElementById("searchInput").value.toLowerCase();
+  const rows = patients.filter(p=>p.name.toLowerCase().includes(q)||p.id.toLowerCase().includes(q));
+  tb.innerHTML = rows.map(p=>`
+    <tr class="patient-row ${p.status}">
+      <td><strong>${p.id}</strong><br><small>${p.name}</small></td>
+      <td>${p.wound}</td>
+      <td class="${p.ph>7.8?'text-danger':p.ph<6.8?'text-warning':'text-success'}">${p.ph}</td>
+      <td class="${p.temp>38?'text-danger':''}">${p.temp}</td>
+      <td>${p.moisture}%</td>
+      <td>${riskBar(p.risk)}</td>
+      <td>${statusBadge(p.status)}</td>
+      <td><small>${Math.floor(Math.random()*5)+1}m ago</small></td>
+      <td><button class="btn btn-sm btn-outline-glow">View</button></td>
+    </tr>
+  `).join("");
+}
+document.getElementById("searchInput").addEventListener("input",renderTable);
+renderTable();
+
+function renderAlerts(){
+  const af = document.getElementById("alertFeed");
+  af.innerHTML = alerts.map(a=>`
+    <div class="alert-item ${a.level}">
+      <div class="alert-time">${a.time}</div>
+      <div class="alert-content">
+        <strong>${a.patient}</strong><br>${a.msg}
+      </div>
+      <span class="status-badge ${a.level}">${a.level==="ok"?"Normal":a.level.charAt(0).toUpperCase()+a.level.slice(1)}</span>
+    </div>
+  `).join("");
+}
+renderAlerts();
+
+function refreshData(){
+  patients.forEach(p=>{
+    p.ph = +(p.ph + (Math.random()-0.5)*0.2).toFixed(2);
+    p.temp = +(p.temp + (Math.random()-0.5)*0.3).toFixed(1);
+    p.moisture = Math.min(100,Math.max(20,Math.round(p.moisture+(Math.random()-0.5)*5)));
+  });
+  renderTable();
+}
+setInterval(refreshData, 30000);
+
+// Charts
+const labels = ["10:00","10:05","10:10","10:15","10:20","10:25","10:30","10:35","10:40","10:45"];
+const phData = [7.9,8.0,8.0,8.1,8.2,8.1,8.2,8.3,8.3,8.3];
+const tempData = [38.1,38.2,38.3,38.3,38.5,38.6,38.7,38.8,38.9,38.9];
+
+function mkChart(id,label,data,color){
+  const ctx = document.getElementById(id).getContext("2d");
+  new Chart(ctx,{
+    type:"line",
+    data:{labels,datasets:[{label,data,borderColor:color,backgroundColor:color+"22",fill:true,tension:0.4,pointRadius:3,pointBackgroundColor:color}]},
+    options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:"#8899aa",font:{size:11}},grid:{color:"#1a2a3a"}},y:{ticks:{color:"#8899aa",font:{size:11}},grid:{color:"#1a2a3a"}}}}
+  });
+}
+mkChart("phChart","pH",phData,"#00d4ff");
+mkChart("tempChart","Temp °C",tempData,"#ff6b6b");
+</script>
+</body>
+</html>

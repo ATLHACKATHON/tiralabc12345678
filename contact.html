@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – MediPulse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,800;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <img src="logo.jpeg" alt="MediPulse Logo" class="nav-logo"/>
+      <span class="brand-text">MEDI<span class="brand-accent">PULSE</span></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="device.html">The Device</a></li>
+        <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+        <li class="nav-item ms-lg-3"><a class="btn btn-glow" href="dashboard.html">Live Monitor</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero py-5">
+  <div class="container text-center">
+    <div class="section-label">GET IN TOUCH</div>
+    <h1 class="section-title">Contact <span class="text-gradient">MediPulse</span></h1>
+    <p class="hero-sub mx-auto" style="max-width:560px;">Schedule a demo, request a clinical trial kit, or connect with our team. We respond within one business day.</p>
+  </div>
+</section>
+
+<section class="py-5 pb-5">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <div class="contact-info-panel">
+          <h4 class="mb-4">Our Offices</h4>
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
+            <div>
+              <strong>Headquarters</strong><br>
+              <span>MediPulse Health & Innovation Pvt. Ltd.<br>42, Biotech Hub, Electronic City<br>Bangalore – 560100, India</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="bi bi-building"></i></div>
+            <div>
+              <strong>Global R&D Office</strong><br>
+              <span>MediPulse Inc.<br>1 Innovation Drive, Suite 304<br>Boston, MA 02115, USA</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="bi bi-envelope-fill"></i></div>
+            <div>
+              <strong>Email</strong><br>
+              <a href="mailto:hello@medipulse.health">hello@medipulse.health</a><br>
+              <a href="mailto:clinical@medipulse.health">clinical@medipulse.health</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
+            <div>
+              <strong>Phone</strong><br>
+              +91 80 4500 7890 (India)<br>
+              +1 617 555 0198 (USA)
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="badge-live d-inline-block mb-2">Response Time</div>
+            <div class="response-time-bar">
+              <div class="rtb-fill"></div>
+              <span>Average: 4 hours</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="contact-form-panel">
+          <h4 class="mb-4">Send Us a Message</h4>
+          <div id="formSuccess" class="alert-success-custom d-none">
+            <i class="bi bi-check-circle-fill"></i> Message sent! We'll be in touch within 24 hours.
+          </div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-control mp-input" placeholder="John"/>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-control mp-input" placeholder="Doe"/>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control mp-input" placeholder="john@hospital.com"/>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-control mp-input" placeholder="+1 555 000 0000"/>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Organization / Hospital</label>
+              <input type="text" class="form-control mp-input" placeholder="City General Hospital"/>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Inquiry Type</label>
+              <select class="form-select mp-input">
+                <option>Product Demo Request</option>
+                <option>Clinical Trial Kit</option>
+                <option>Partnership / Distribution</option>
+                <option>Technical Support</option>
+                <option>Press & Media</option>
+                <option>General Inquiry</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Message</label>
+              <textarea class="form-control mp-input" rows="4" placeholder="Tell us about your use case or question..."></textarea>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-glow w-100 py-3" onclick="submitForm()">
+                <i class="bi bi-send me-2"></i>Send Message
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OFFICES MAP PLACEHOLDER -->
+    <div class="mt-5">
+      <div class="section-label text-center mb-3">GLOBAL PRESENCE</div>
+      <div class="global-map-banner">
+        <div class="map-dot" style="left:68%;top:52%"><span class="map-tooltip">Bangalore HQ</span></div>
+        <div class="map-dot" style="left:22%;top:35%"><span class="map-tooltip">Boston, USA</span></div>
+        <div class="map-dot" style="left:47%;top:30%"><span class="map-tooltip">London, UK</span></div>
+        <div class="map-dot" style="left:75%;top:42%"><span class="map-tooltip">Singapore</span></div>
+        <div class="map-dot" style="left:79%;top:36%"><span class="map-tooltip">Tokyo, Japan</span></div>
+        <div class="map-banner-text">Deployed in 6 Countries · 120+ Hospitals</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer pt-5 pb-3">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 MediPulse Health & Innovation. All rights reserved.</span>
+      <span class="ms-auto"><a href="index.html" class="text-decoration-none" style="color:var(--accent)">← Back to Home</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
+<script>
+function submitForm(){
+  document.getElementById("formSuccess").classList.remove("d-none");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
